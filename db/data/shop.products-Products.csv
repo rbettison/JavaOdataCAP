@@ -1,0 +1,5 @@
+ID;name;description;imageUrl;barcode;cart_ID
+1;A flashy product;This is the flashiest product;flashyImageUrl;1010101;1
+2;A boring product;This is the most boring product;boringImageUrl;12121212;2
+3;A gardening tool;This is the gardening tool product;gardeningToolUrl;999999;1
+4;A kitchen product;This is the useful kitchen product;kitchenImageUrl;1010101;1
