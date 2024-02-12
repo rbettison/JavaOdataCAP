@@ -12,6 +12,9 @@ jobs:
           node-version: 21
 
       - run: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+      - run: (echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"') >> /home/runner/.bashrc
+      - run: eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+      
       - run: brew install sapmachine-jdk
 
       - run: yes | sudo apt install maven
