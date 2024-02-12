@@ -10,6 +10,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 21
+      - run: sudo apt install openjdk-17-jdk openjdk-17-jre
+      - run: yes | sudo apt install maven
       - run: npm install -g @sap/cds-dk
       - run: npm install -g mbt
       - run: wget -q -O - https://packages.cloudfoundry.org/debian/cli.cloudfoundry.org.key | sudo apt-key add -
