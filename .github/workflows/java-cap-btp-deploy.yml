@@ -15,6 +15,9 @@ jobs:
       - run: java --version
       
       - run: yes | sudo apt install maven
+      - run: mvn -version
+
+
       - run: npm install -g @sap/cds-dk
       - run: npm install -g mbt
       - run: wget -q -O - https://packages.cloudfoundry.org/debian/cli.cloudfoundry.org.key | sudo apt-key add -
