@@ -14,7 +14,7 @@ jobs:
       - run: sudo bash
       - run: sudo apt-get update
       - run: sudo apt-get install -y --no-install-recommends ca-certificates gnupg2 
-      - run: rm -rf /var/lib/apt/lists/*
+      - run: sudo rm -rf /var/lib/apt/lists/*
 
       - run: export GNUPGHOME="$(mktemp -d)"
       - run: gpg --batch --keyserver hkps://keys.openpgp.org --recv-keys CACB9FE09150307D1D22D82962754C3B3ABCFE23
@@ -23,7 +23,7 @@ jobs:
       - run: echo "deb http://dist.sapmachine.io/debian/$(dpkg --print-architecture)/ ./" > /etc/apt/sources.list.d/sapmachine.list
       - run: sudo apt-get update
       - run: sudo apt-get -y --no-install-recommends install sapmachine-17-jdk
-      - run: rm -rf /var/lib/apt/lists/*
+      - run: sudo rm -rf /var/lib/apt/lists/*
       - run: export JAVA_HOME=/usr/lib/jvm/sapmachine-17
 
       - run: yes | sudo apt install maven
