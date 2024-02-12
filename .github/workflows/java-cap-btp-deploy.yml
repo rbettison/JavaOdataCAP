@@ -11,9 +11,8 @@ jobs:
         with:
           node-version: 21
 
-      - run: sudo apt-get update
-      - run: sudo apt-get -y --no-install-recommends install sapmachine-21-jdk
-      - run: export JAVA_HOME=/usr/lib/jvm/sapmachine-21
+      - run: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+      - run: brew install sapmachine-jdk
 
       - run: yes | sudo apt install maven
       - run: npm install -g @sap/cds-dk
