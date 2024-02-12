@@ -17,4 +17,4 @@ jobs:
       - run: sudo apt-get update
       - run: sudo apt-get install cf8-cli
       - run: cf add-plugin-repo CF-Community https://plugins.cloudfoundry.org
-      - run: cf install-plugin multiapps
+      - run: yes | cf install-plugin multiapps
