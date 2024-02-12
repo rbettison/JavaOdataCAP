@@ -13,14 +13,13 @@ jobs:
       - run: sudo apt install openjdk-17-jdk openjdk-17-jre
 
       - run: update-alternatives --config java
-      - run: export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64/bin/java
+      - run: echo "JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64/bin/java" >> ~/.bashrc
+      - run: source ~/.bashrc
 
       - run: java --version
 
       - run: echo ${JAVA_HOME}
       - run: mvn -version
-
-      - run: echo "JAVA_HOME=/usr/lib/jvm/openjdk-17-jdk" >> .bashrc 
 
       - run: java --version
 
