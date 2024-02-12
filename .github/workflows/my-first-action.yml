@@ -1,0 +1,9 @@
+
+name: my-first-action
+run-name: ${{ github.actor }} is learning GitHub Actions
+on: [push]
+jobs:
+  hello-world:
+    runs-on: ubuntu-latest
+    steps:
+      - run: console.log('hello world!')
