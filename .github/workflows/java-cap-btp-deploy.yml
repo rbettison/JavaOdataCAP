@@ -12,7 +12,16 @@ jobs:
           node-version: 21
       - run: sudo apt install openjdk-17-jdk openjdk-17-jre
 
+
       - run: java --version
+
+      - run: echo ${JAVA_HOME}
+      - run: mvn -version
+
+      - run: export JAVA_HOME=/usr/lib/jvm/openjdk-17-jdk
+
+      - run: java --version
+
       - run: echo ${JAVA_HOME}
 
       - run: yes | sudo apt install maven
