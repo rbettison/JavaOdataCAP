@@ -17,6 +17,7 @@ jobs:
       - run: source ~/.bashrc
 
       - run: cat ~/.bashrc
+      - run: cat ~/.profile
 
       - run: java --version
 
