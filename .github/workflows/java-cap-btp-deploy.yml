@@ -16,7 +16,9 @@ jobs:
       - run: eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
       - run: source /home/runner/.bashrc
 
+      - run: cat /home/runner/.bashrc
       - run: brew install sapmachine-jdk
+
 
       - run: yes | sudo apt install maven
       - run: npm install -g @sap/cds-dk
