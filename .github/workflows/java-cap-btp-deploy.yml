@@ -12,7 +12,8 @@ jobs:
           node-version: 21
       - run: sudo apt install openjdk-17-jdk openjdk-17-jre
 
-      - run: yes '3' | update-alternatives --config java
+      - run: update-alternatives --config java
+      - run: export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64/bin/java
 
       - run: java --version
 
