@@ -10,7 +10,22 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 21
-      - run: sudo apt install openjdk-17-jdk openjdk-17-jre
+
+      - run: sudo bash
+      - run: apt-get update
+      - run: apt-get install -y --no-install-recommends ca-certificates gnupg2 
+      - run: rm -rf /var/lib/apt/lists/*
+
+      - run: export GNUPGHOME="$(mktemp -d)"
+      - run: gpg --batch --keyserver hkps://keys.openpgp.org --recv-keys CACB9FE09150307D1D22D82962754C3B3ABCFE23
+      - run: gpg --batch --export --armor 'CACB 9FE0 9150 307D 1D22 D829 6275 4C3B 3ABC FE23' > /etc/apt/trusted.gpg.d/sapmachine.gpg.asc
+      - run: gpgconf --kill all && rm -rf "$GNUPGHOME"
+      - run: echo "deb http://dist.sapmachine.io/debian/$(dpkg --print-architecture)/ ./" > /etc/apt/sources.list.d/sapmachine.list
+      - run: apt-get update
+      - run: apt-get -y --no-install-recommends install sapmachine-17-jdk
+      - run: rm -rf /var/lib/apt/lists/*
+      - run: export JAVA_HOME=/usr/lib/jvm/sapmachine-17
+
       - run: yes | sudo apt install maven
       - run: npm install -g @sap/cds-dk
       - run: npm install -g mbt
