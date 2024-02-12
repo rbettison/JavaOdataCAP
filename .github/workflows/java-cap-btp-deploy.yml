@@ -13,8 +13,8 @@ jobs:
       - run: sudo apt install openjdk-17-jdk openjdk-17-jre
 
       - run: update-alternatives --config java
-      - run: echo "JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64/bin/java" >> ~/.bashrc
-      - run: source ~/.bashrc
+      - run: echo "JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64/bin/java" >> ~/.bash_profile
+      - run: source ~/.bash_profile
 
       - run: cat ~/.bashrc
       - run: cat ~/.profile
