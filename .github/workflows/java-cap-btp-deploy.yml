@@ -11,19 +11,8 @@ jobs:
         with:
           node-version: 21
 
-      - run: sudo bash
-      - run: sudo apt-get update
-      - run: sudo apt-get install -y --no-install-recommends ca-certificates gnupg2 
-      - run: sudo rm -rf /var/lib/apt/lists/*
-
-      - run: export GNUPGHOME="$(mktemp -d)"
-      - run: sudo gpg --batch --keyserver hkps://keys.openpgp.org --recv-keys CACB9FE09150307D1D22D82962754C3B3ABCFE23
-      - run: sudo gpg --batch --export --armor 'CACB 9FE0 9150 307D 1D22 D829 6275 4C3B 3ABC FE23' > /etc/apt/trusted.gpg.d/sapmachine.gpg.asc
-      - run: sudo gpgconf --kill all && rm -rf "$GNUPGHOME"
-      - run: echo "deb http://dist.sapmachine.io/debian/$(dpkg --print-architecture)/ ./" > /etc/apt/sources.list.d/sapmachine.list
       - run: sudo apt-get update
       - run: sudo apt-get -y --no-install-recommends install sapmachine-17-jdk
-      - run: sudo rm -rf /var/lib/apt/lists/*
       - run: export JAVA_HOME=/usr/lib/jvm/sapmachine-17
 
       - run: yes | sudo apt install maven
