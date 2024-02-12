@@ -12,8 +12,8 @@ jobs:
           node-version: 21
 
       - run: sudo apt-get update
-      - run: sudo apt-get -y --no-install-recommends install sapmachine-17-jdk
-      - run: export JAVA_HOME=/usr/lib/jvm/sapmachine-17
+      - run: sudo apt-get -y --no-install-recommends install sapmachine-21-jdk
+      - run: export JAVA_HOME=/usr/lib/jvm/sapmachine-21
 
       - run: yes | sudo apt install maven
       - run: npm install -g @sap/cds-dk
