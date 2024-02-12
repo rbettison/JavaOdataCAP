@@ -1,0 +1,15 @@
+
+name: java-cap-btp-deploy
+run-name: ${{ github.actor }} is learning GitHub Actions
+on: [push]
+jobs:
+  hello-world:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+      - run: npm install -g @sap/cds-dk
+      - run: npm install -g mbt
+      - run: cf -v
