@@ -16,6 +16,8 @@ jobs:
       - run: echo "JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64/bin/java" >> ~/.bashrc
       - run: source ~/.bashrc
 
+      - run: cat ~/.bashrc
+
       - run: java --version
 
       - run: echo ${JAVA_HOME}
