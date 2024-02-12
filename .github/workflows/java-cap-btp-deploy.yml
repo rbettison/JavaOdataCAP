@@ -10,16 +10,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 21
-
-      - run: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-      - run: (echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"') >> /home/runner/.bashrc
-      - run: eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-      - run: source /home/runner/.bashrc
-
-      - run: cat /home/runner/.bashrc
-      - run: brew install sapmachine-jdk
-
-
+      - run: sudo apt install openjdk-17-jdk openjdk-17-jre
+      
       - run: yes | sudo apt install maven
       - run: npm install -g @sap/cds-dk
       - run: npm install -g mbt
