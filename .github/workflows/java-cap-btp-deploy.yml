@@ -3,7 +3,7 @@ name: java-cap-btp-deploy
 run-name: ${{ github.actor }} is learning GitHub Actions
 on: [push]
 jobs:
-  hello-world:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -18,3 +18,11 @@ jobs:
       - run: sudo apt-get install cf8-cli
       - run: cf add-plugin-repo CF-Community https://plugins.cloudfoundry.org
       - run: yes | cf install-plugin multiapps
+      - run: cds add hana --for production
+      - run: cds add xsuaa --for production
+      - run: cds add mta
+      - run: cds add approuter --for production
+      - run: cds build --production
+      - run: mbt build -t gen --mtar mta.tar
+      - run: cf deploy gen/mta.tar
+
