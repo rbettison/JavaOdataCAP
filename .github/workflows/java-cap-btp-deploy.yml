@@ -18,7 +18,7 @@ jobs:
       - run: echo ${JAVA_HOME}
       - run: mvn -version
 
-      - run: export JAVA_HOME=/usr/lib/jvm/openjdk-17-jdk
+      - run: echo "JAVA_HOME=/usr/lib/jvm/openjdk-17-jdk" >> .bashrc 
 
       - run: java --version
 
