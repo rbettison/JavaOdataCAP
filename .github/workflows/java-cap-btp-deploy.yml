@@ -37,6 +37,7 @@ jobs:
       - run: cds add approuter --for production
       - run: cds build --production
       - run: mbt build -t gen --mtar mta.tar
+      
       - shell: bash
         env:
           btp_api_url: ${{ secrets.BTP_API_URL }}
