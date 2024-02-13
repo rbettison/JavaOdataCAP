@@ -37,15 +37,15 @@ jobs:
       - run: cds add approuter --for production
       - run: cds build --production
       - run: mbt build -t gen --mtar mta.tar
-      - run: echo $BTP_API_URL
-        - with:
+      - with:
           btp_api_url: $ {{ secrets.BTP_API_URL }}
-      - run: cf login -a $BTP_API_URL -u $BTP_USERNAME -p $BTP_PASSWORD -o $BTP_ORG -s $BTP_SPACE
-        - with:
+        run: echo $BTP_API_URL
+      - with:
           btp_api_url: $ {{ secrets.BTP_API_URL }}
           btp_user: $ {{ secrets.BTP_USER }}
           btp_password: $ {{ secrets.BTP_PASSWORD }}
           btp_org: $ {{ secrets.BTP_ORG }}
           btp_space: $ {{ secrets.BTP_SPACE }}
+        run: cf login -a $BTP_API_URL -u $BTP_USERNAME -p $BTP_PASSWORD -o $BTP_ORG -s $BTP_SPACE
       - run: cf deploy gen/mta.tar
 
