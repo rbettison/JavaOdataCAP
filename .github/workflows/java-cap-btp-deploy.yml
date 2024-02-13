@@ -1,27 +1,18 @@
 
 name: java-cap-btp-deploy
-inputs:
-  api-url:
-    description: 'BTP API URL'
-    required: true
-  username:
-    description: 'BTP Username'
-    required: true
-  password:
-    description: 'BTP Password'
-    required: true
-  org:
-    description: 'BTP Org'
-    required: true
-  space:
-    description: 'BTP Space'
-    required: true
 run-name: ${{ github.actor }} is learning GitHub Actions
 on: [push]
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
+      - with:
+        btp_api_url: $ {{ secrets.BTP_API_URL }}
+        btp_user: $ {{ secrets.BTP_USER }}
+        btp_password: $ {{ secrets.BTP_PASSWORD }}
+        btp_org: $ {{ secrets.BTP_ORG }}
+        btp_space: $ {{ secrets.BTP_SPACE }}
+
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
@@ -53,6 +44,7 @@ jobs:
       - run: cds add approuter --for production
       - run: cds build --production
       - run: mbt build -t gen --mtar mta.tar
-      - run: cf login -a INPUT_API_URL -u INPUT_USERNAME -p INPUT_PASSWORD -o INPUT_ORG -s INPUT_SPACE
+      - run: echo $BTP_API_URL
+      - run: cf login -a $BTP_API_URL -u $BTP_USERNAME -p $BTP_PASSWORD -o $BTP_ORG -s $BTP_SPACE
       - run: cf deploy gen/mta.tar
 
