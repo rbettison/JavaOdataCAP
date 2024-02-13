@@ -1,5 +1,21 @@
 
 name: java-cap-btp-deploy
+inputs:
+  api-url:
+    description: 'BTP API URL'
+    required: true
+  username:
+    description: 'BTP Username'
+    required: true
+  password:
+    description: 'BTP Password'
+    required: true
+  org:
+    description: 'BTP Org'
+    required: true
+  space:
+    description: 'BTP Space'
+    required: true
 run-name: ${{ github.actor }} is learning GitHub Actions
 on: [push]
 jobs:
@@ -21,6 +37,7 @@ jobs:
           maven-version: 3.8.2
 
       - run: echo $JAVA_HOME
+      - run: echo mvn -version
 
       - run: npm install -g @sap/cds-dk
       - run: npm install -g mbt
@@ -36,5 +53,6 @@ jobs:
       - run: cds add approuter --for production
       - run: cds build --production
       - run: mbt build -t gen --mtar mta.tar
+      - run: cf login -a INPUT_API_URL -u INPUT_USERNAME -p INPUT_PASSWORD -o INPUT_ORG -s INPUT_SPACE
       - run: cf deploy gen/mta.tar
 
