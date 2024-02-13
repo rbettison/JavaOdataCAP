@@ -14,7 +14,7 @@ jobs:
       - run: update-alternatives --config java
       - run: sudo update-java-alternatives -s temurin-17-jdk-amd64
       - run: echo $JAVA_HOME
-      - run: echo "JAVA_HOME=/usr/lib/jvm/temurin-17-jdk-amd64/" >> ~/.bashrc
+      - run: echo "export JAVA_HOME=/usr/lib/jvm/temurin-17-jdk-amd64" >> ~/.bashrc
       - run: source ~/.bashrc
 
       - run: cat ~/.bashrc
