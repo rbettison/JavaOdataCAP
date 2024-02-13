@@ -14,6 +14,7 @@ jobs:
 
       - run: update-alternatives --config java
       - run: sudo update-java-alternatives -s temurin-17-jdk-amd64
+      - run: echo $JAVA_HOME
       - run: echo "JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64/bin/java" >> ~/.bash_profile
       - run: source ~/.bash_profile
 
