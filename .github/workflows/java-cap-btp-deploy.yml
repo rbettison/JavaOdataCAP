@@ -10,36 +10,17 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 21
-
-      - run: find /etc -type f -exec grep -Fw JAVA_HOME {} +
-      - run: PS4='+$BASH_SOURCE> ' BASH_XTRACEFD=7 bash -xl 7>&2
-      - run: update-alternatives --config java
-      - run: sudo update-java-alternatives -s temurin-17-jdk-amd64
-      - run: echo $JAVA_HOME
-      - run: echo "export JAVA_HOME=/usr/lib/jvm/temurin-17-jdk-amd64" >> ~/.bashrc
-      - run: source ~/.bashrc
-      - run: ls
-
-
-
-      - run: cat ~/.profile
-
-      - run: cat ~/.bashrc
-      - run: cat ~/.profile
-      - run: cat ~/.bash_profile
-
-      - run: java --version
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin' # See 'Supported distributions' for available options
+          java-version: '21'
+      - name: Set up Maven
+        uses: stCarolas/setup-maven@v5
+        with:
+          maven-version: 3.8.2
 
       - run: echo $JAVA_HOME
-      - run: mvn -version
-
-      - run: java --version
-
-      - run: echo $JAVA_HOME
-
-      - run: yes | sudo apt install maven
-      - run: mvn -version
-
 
       - run: npm install -g @sap/cds-dk
       - run: npm install -g mbt
