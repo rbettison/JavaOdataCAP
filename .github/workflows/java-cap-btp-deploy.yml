@@ -10,13 +10,12 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 21
-      - run: sudo apt install openjdk-17-jdk openjdk-17-jre
 
       - run: update-alternatives --config java
       - run: sudo update-java-alternatives -s temurin-17-jdk-amd64
       - run: echo $JAVA_HOME
-      - run: echo "JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64/bin/java" >> ~/.bash_profile
-      - run: source ~/.bash_profile
+      - run: echo "JAVA_HOME=/usr/lib/jvm/temurin-17-jdk-amd64/" >> ~/.bashrc
+      - run: source ~/.bashrc
 
       - run: cat ~/.bashrc
       - run: cat ~/.profile
@@ -24,12 +23,12 @@ jobs:
 
       - run: java --version
 
-      - run: echo ${JAVA_HOME}
+      - run: echo $JAVA_HOME
       - run: mvn -version
 
       - run: java --version
 
-      - run: echo ${JAVA_HOME}
+      - run: echo $JAVA_HOME
 
       - run: yes | sudo apt install maven
       - run: mvn -version
