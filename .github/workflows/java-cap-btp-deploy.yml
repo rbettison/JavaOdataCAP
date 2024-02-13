@@ -39,15 +39,15 @@ jobs:
       - run: mbt build -t gen --mtar mta.tar
       - shell: bash
         env:
-          btp_api_url: $ {{ secrets.BTP_API_URL }}
+          btp_api_url: ${{ secrets.BTP_API_URL }}
         run: echo "$btp_api_url" "$BTP_API_URL"
       - shell: bash
         env:
-          btp_api_url: $ {{ secrets.BTP_API_URL }}
-          btp_user: $ {{ secrets.BTP_USER }}
-          btp_password: $ {{ secrets.BTP_PASSWORD }}
-          btp_org: $ {{ secrets.BTP_ORG }}
-          btp_space: $ {{ secrets.BTP_SPACE }}
+          btp_api_url: ${{ secrets.BTP_API_URL }}
+          btp_user: ${{ secrets.BTP_USER }}
+          btp_password: ${{ secrets.BTP_PASSWORD }}
+          btp_org: ${{ secrets.BTP_ORG }}
+          btp_space: ${{ secrets.BTP_SPACE }}
         run: cf login -a "$BTP_API_URL" -u $BTP_USERNAME -p $BTP_PASSWORD -o $BTP_ORG -s $BTP_SPACE
       - run: cf deploy gen/mta.tar
 
