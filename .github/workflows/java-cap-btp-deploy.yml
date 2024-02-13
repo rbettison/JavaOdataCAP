@@ -37,11 +37,12 @@ jobs:
       - run: cds add approuter --for production
       - run: cds build --production
       - run: mbt build -t gen --mtar mta.tar
-      
+
       - shell: bash
         env:
           btp_api_url: ${{ secrets.BTP_API_URL }}
-        run: echo "$btp_api_url" "$BTP_API_URL"
+          github_token: ${{secrets.GITHUB_TOKEN}}
+        run: echo "$btp_api_url" "$BTP_API_URL" "$GITHUB_TOKEN" "Sgithub_token"
       - shell: bash
         env:
           btp_api_url: ${{ secrets.BTP_API_URL }}
