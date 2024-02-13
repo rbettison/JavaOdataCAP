@@ -17,7 +17,7 @@ jobs:
       - run: echo "export JAVA_HOME=/usr/lib/jvm/temurin-17-jdk-amd64" >> ~/.bashrc
       - run: source ~/.bashrc
       - run: ls
-      - run: cat ~/etc/environment
+      - run: cat ~/etc
 
       - run: cat ~/.bashrc
       - run: cat ~/.profile
