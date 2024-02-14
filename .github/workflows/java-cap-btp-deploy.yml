@@ -36,7 +36,9 @@ jobs:
       - run: cds build --production
       - run: mbt build -t gen --mtar mta.tar
       - shell: bash
-        run: echo "Force build"
+        env:           
+          btp_org: ${{ env.BTP_ORG }}
+        run: echo "'${{env.btp_org}}'"
       - shell: bash
         env:
           btp_api_url: ${{ secrets.BTP_API_URL }}
