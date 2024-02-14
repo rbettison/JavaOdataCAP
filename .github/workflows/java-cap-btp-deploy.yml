@@ -40,7 +40,7 @@ jobs:
           btp_api_url: ${{ secrets.BTP_API_URL }}
           github_token: ${{secrets.GITHUB_TOKEN}}
           btp_org: ${{ env.BTP_ORG }}
-        run: echo "$btp_api_url" "$github_token" "$btp_org"
+        run: echo "$btp_api_url" "$github_token" "$btp_org" $btp_org
       - shell: bash
         env:
           btp_api_url: ${{ secrets.BTP_API_URL }}
