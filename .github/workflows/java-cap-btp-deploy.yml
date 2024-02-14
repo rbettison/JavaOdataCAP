@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - shell: bash
-          run: echo "this is the btp org env variable ${{ env.BTP_ORG }}"
+        run: echo "this is the btp org env variable ${{ env.BTP_ORG }}"
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
