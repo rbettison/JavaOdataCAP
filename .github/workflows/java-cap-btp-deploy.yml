@@ -39,13 +39,14 @@ jobs:
         env:
           btp_api_url: ${{ secrets.BTP_API_URL }}
           github_token: ${{secrets.GITHUB_TOKEN}}
-        run: echo "$btp_api_url" "$github_token"
+          btp_org: ${{ env.BTP_ORG }}
+        run: echo "$btp_api_url" "$github_token" "$btp_org"
       - shell: bash
         env:
           btp_api_url: ${{ secrets.BTP_API_URL }}
           btp_user: ${{ secrets.BTP_USER }}
           btp_password: ${{ secrets.BTP_PASSWORD }}
-          btp_org: ${{ secrets.BTP_ORG }}
+          btp_org: ${{ env.BTP_ORG }}
           btp_space: ${{ secrets.BTP_SPACE }}
         run: cf login -a "$btp_api_url" -u "$btp_user" -p "$btp_password" -o "$btp_org" -s "$btp_space"
       - run: cf deploy gen/mta.tar
