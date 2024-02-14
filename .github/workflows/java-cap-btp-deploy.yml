@@ -36,7 +36,7 @@ jobs:
       - run: cds build --production
       - run: mbt build -t gen --mtar mta.tar
       - shell: bash
-        run: echo $BTP_ORG
+        run: echo ${{env.BTP_ORG}}
       - shell: bash
         env:
           btp_api_url: ${{ secrets.BTP_API_URL }}
