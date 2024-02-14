@@ -22,7 +22,6 @@ jobs:
 
       - run: echo $JAVA_HOME
       - run: echo mvn -version
-
       - run: npm install -g @sap/cds-dk
       - run: npm install -g mbt
       - run: wget -q -O - https://packages.cloudfoundry.org/debian/cli.cloudfoundry.org.key | sudo apt-key add -
