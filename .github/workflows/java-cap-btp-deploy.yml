@@ -46,4 +46,3 @@ jobs:
           btp_space: ${{ secrets.BTP_SPACE }}
         run: cf login -a "$btp_api_url" -u "$btp_user" -p "$btp_password" -o "$btp_org" -s "$btp_space"
       - run: cf deploy gen/mta.tar
-
